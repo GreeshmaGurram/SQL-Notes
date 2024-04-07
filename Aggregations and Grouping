@@ -1,0 +1,32 @@
+Aggregation: combining multiple rows into single value SUM, AVG, MIN, MAX, COUNT
+  fn: SELECT fn(c1) FROM table_name => aggregate fun of all c1 vals 
+      Ex: 1. SELECT SUM(score) FROM player WHERE name="Dhoni" => get the total Score from player table for player name Dhoni
+          2. SELECT COUNT(match), SUM(score) FROM player WHERE name="DHONI"
+Alias: used to provide alternative temporary name for cols
+  EX: SELECT COUNT(match) as totalMatches, SUM(score) as totalScore FROM player WHERE name="DHONI";
+
+GROUP BY : used to group rows which have the same value. SELECT * FROM table_name GROUP BY c1, c2.
+HAVING : used to filter grouped rows. Ex: SELECT name, COUNT() AS half_centuries FROM player_match_details WHERE score >= 50 GROUP BY name HAVING half_centuries > 1;
+Type casting using CAST func => CAST (strftime("%Y", release_date) AS INT)
+CASE: to write if else conditions. SELECT id, name, collection_in_cr - budget_in_cr as profit, CASE WHEN collection_in_cr - budget_in_cr <= 100 THEN (collection_in_cr - budget_in_cr) * 0.10
+                                    ELSE (collection_in_cr - budget_in_cr) *0.18 END as tax_amouunt FROM movie  
+SQL Set Operators => used to combine 2/more SQL queries.INERSECT, MINUS, UNION, UNION ALL
+Ex: SELECT actor_id FROM movie WHERE movie_id = 6 INERSET/UNION/MINUS/UNION ALL/EXCEPT SELECT actor_id FROM cast WHERE movie_id=5;
+
+Modelling Databases: 1. Entity/Entity type: Any real worl object/concept => form tables in database
+                     2. Attributes of Entities: Properties of Entities,  form columns of the tabels in the database
+                        Key Attribute which uniquely identifies the entity is called Primary Key => form column to identify each row uniquely(primary key) in the tabels in the database
+Relationship Types between Entities: 
+1 to 1 (cardinality ratio: 1:1) => Primary Key is stored in the other table as foreign key in that of the entity 
+1 to many/many to 1  (cardinality ratio: 1:m / m:1) , => Primary Key is stored in the other table as foreign key in that of the entity 
+many to many  (cardinality ratio: m:m) => use temporary 3rd table called Junction table => has foreign key which is the primary key of one entity and has foreign key which is primary key of other entity
+
+Cardinality ratio: max no of times an instance in 1 entity can relate to instance of another entity
+
+
+* Creating TABLES:
+1. CREATE TABLE customer (id INT NOT NULL PRIMARY KEY, name VARCHAR(250), age INT)
+2. for foreign Key: CREATE TABLE table_name (id INT NOT NULL PRIMARY KEY, product_id INT NOT NULL UNIQUE, FOREIGN KEY(product_id) REFERENCES product(id) ON DELETE CASCADE ==> col name for foreign key is produt id which points to the 
+id column in product table, ON DELETE CASCADE=> if any changes done in other table like deletion, updatation, do in this table too
+3. JUNCTION TABLE: CREATE TABLE cart_product
+                    (id INT NOT NULL PRIMARY KEY, product_id INT, cart_id INT, FOREIGN KEY(product_id) REFERENCES product(id) ON DELETE CASCADE, FOREIGN KEY(cart_id) REFERENCES cart(id) ON DELETE CASCADE)
