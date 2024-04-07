@@ -1,0 +1,32 @@
+Velocity of data: Rate of data generated every min
+Volume of data: Amount of data generated
+Stakeholders of data: who are using data. Ex: companies, developers, AI/ML Engineers, Data Scientists etc.
+Database: organised collection of data
+DBMS: Database Management System: Software to handle and perform CRUD operations on database. Every interaction with database happens through DBMS.
+  Ensures safety and security, maintabilty
+Database type: Relational: Table format
+               Non Relational: Graph, key - val, Column family
+SQL: Structured Query Language: allows to perform CRUD operations on database, queries are case insensitive
+  C: CREATE a row => INSERT INTO table_name(c1, c2, ....) VALUES(r11, r12, ...), (r21, r22, ...), (r31, r32, ...);
+    or CREATE a table => CREATE TABLE table_name(c1 dataType1, c2 dataType2 ...) 
+  R: RETRIEVE => SELECT * FROM table_name
+  U: UPDATE => UPDATE table_name SET c1=v1, c2=v2 ... => sets for all rows
+            => UPDATE tabel_name SET c1=v1, c2=v2, ... WHERE id=val => sets for only the row which has id as val value
+  D: DELETE => DELETE FROM table_name WHERE id=val
+DataTypes: INTEGER/INT, VARCHAR(max_count), TEXT, FLOAT, DATE, TIME, BOOLEAN, TIME, DATETIME
+DROP a table from database: DROP TABLE table_name
+ALTER table => add new col to already existing table or rename a existing col or delete a col
+ALTER TABLE table_name ADD c1 dt1 or ALTER TABLE table_name RENAME COLUMN c1 TO col1 or ALTER TABLE table_name DROP COLUMN col1;
+
+Operators in the Queries: 
+  1. LIKE operator to check for a pattern in all rows Ex: SELECT * FROM player WHERE name LIKE "%a%" ==> any name that contains a, LIKE "_a_" ==> any name that has 1 letter before and after a EX: Ram
+name LIKE "_____" => name that has 5 letters
+BRACKETS, NOT, AND, OR => Highest to Lowest precedence in SQL Syntax: SELECT * FROM table_name WHERE con1 and con2 or con3 and not con4 ===> 1st not con4, 2nd. con1 and con2 3rd con3 & not con4, last or
+  2. IN : gets the rows whose values lie is one among the given values Ex: SELECT * FROM table_name WHERE c1 in (v1, v2, v3) => says that select only rows whose values of c1 column are either v1, v2 or v3.
+  3. BETWEEN: gets the rows whose values lie is range the given values Ex: SELECT * FROM table_name WHERE c1 BETWEEN (v1 AND v2) => says that select only rows whose values of c1 column are in between v1 and v2 values, v1, v2 inclusive.
+
+ORDER BY: arrange the rows in ASC or DESC order based on values of given col EX: SELECT * FROM table_name ORDER BY c1 DESC, c2 ASC;
+
+Pagination: LIMIT and OFFSET Ex: SELECT * FROM table_name LIMIT 10 OFFSET 2 ==> get only 10 rows from the table starting from 3rd row. OFFSET always used after LIMIT only
+
+DISTINCT : get only unique values Ex: SELECT DISTINCT c1 FROM table_name
