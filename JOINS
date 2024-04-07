@@ -1,0 +1,60 @@
+1. SELECT * FROM customer JOIN address ON customer.id = address.customer_id WHERE customer_name = 'John';
+
+JOIN: used to solve problems which involve quering on data stored in 2 tables
+      combines tables into single temporary table
+Types of JOINS: 1. Natural Join => common cols joined, uncommon cols are ignored Ex: SELECT * FROM table_1 NATURAL JOIN table_2;
+                2. INNER JOIN => combine 2 tables, if they meet a specified criteria. ==>  SELECT * FROM table_1 INNER JOIN table_2 ON table_1.c1 = table_2.c2 EX: SELECT * FROM student INNER JOIN review ON student.id = review.student_id
+                3. LEFT JOIN => for each row in the left table, matched rows from right table are combined, if no match, null values are assigned to right rows Ex: SELECT * FROM student LEFT JOIN student_course ON student.id = student_course.student_id
+                4. RIGHT JOIN/ RIGHT OUTER JOIN => opp of LEFT JOIN
+                5. FULL JOIN/ FULL OUTER JOIN => RIGHT JOIN + LEFT JOIN
+                6. CROSS JOIN/ CARTESIAN JOIN => each row from first table combined with all rows in the 2nd table
+                7. SELF JOIN => join table with itself EX. SELECT * FROM table1 AS t1 JOIN table1 AS t2 ON t1.c1 = t2.c2
+JOINS on Multiple tables:
+SELECT * FROM table1 INNER JOIN table2 ON con1 AS T INNER JOIN table3 ON con2 INNER JOIN table4 ON con3
+Ex: SELECT course.corse_name, student.full_name FROM (course INNER JOIN student ON course.student_id = student.id) AS T INNER JOIN student_course ON T.instructor_id = student_course.instructor_id
+
+Transaction: A logical group of 1/ more SQL statements which have to be logically together
+            . has 4 props ACID => Atomicity: Either all statments in the group or none are applied to the database
+                                  Consistency: Transaction always leaves the database in a consistent state, either success or failure
+                                  Isolation: Multiple transactions can occur at the same time without adversely effecting the other
+                                  Durability: Changes of a successful transaction persist even after a system crash
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
